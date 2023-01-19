@@ -1,28 +1,34 @@
 // swift-tools-version: 5.7
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "AppDevUtils",
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "AppDevUtils",
-            targets: ["AppDevUtils"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "AppDevUtils",
-            dependencies: []),
-        .testTarget(
-            name: "AppDevUtilsTests",
-            dependencies: ["AppDevUtils"]),
-    ]
+  name: "AppDevUtils",
+  defaultLocalization: "en",
+  platforms: [
+    .iOS(.v15),
+    .macOS(.v12),
+    .tvOS(.v15),
+    .watchOS(.v8),
+  ],
+  products: [
+    .library(name: "AppDevUtils", targets: ["AppDevUtils"]),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "0.49.2"),
+    .package(url: "https://github.com/yannickl/DynamicColor.git", from: "5.0.1"),
+  ],
+  targets: [
+    .target(
+      name: "AppDevUtils",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "DynamicColor", package: "DynamicColor"),
+      ]
+    ),
+    .testTarget(
+      name: "AppDevUtilsTests",
+      dependencies: ["AppDevUtils"]
+    ),
+  ]
 )
