@@ -14,6 +14,11 @@ public extension Then where Self: Any {
   }
 
   @inlinable
+  func with<Value>(_ keyPath: WritableKeyPath<Self, Value>, setTo value: Value) -> Self {
+    with { $0[keyPath: keyPath] = value }
+  }
+
+  @inlinable
   func `do`(_ block: (Self) throws -> Void) rethrows {
     try block(self)
   }
