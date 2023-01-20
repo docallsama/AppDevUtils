@@ -3,6 +3,8 @@ import SwiftUI
 // MARK: - ActivityIndicator
 
 public struct ActivityIndicator: View {
+  public init() {}
+
   public var body: some View {
     DefaultIndicatorView(count: 8)
   }
@@ -12,6 +14,10 @@ public struct ActivityIndicator: View {
 
 public struct DefaultIndicatorView: View {
   let count: Int
+
+  public init(count: Int) {
+    self.count = count
+  }
 
   public var body: some View {
     GeometryReader { geometry in
@@ -31,6 +37,12 @@ public struct DefaultIndicatorItemView: View {
   let size: CGSize
 
   @State private var opacity: Double = 0
+
+  public init(index: Int, count: Int, size: CGSize) {
+    self.index = index
+    self.count = count
+    self.size = size
+  }
 
   public var body: some View {
     let height = size.height / 3.2
