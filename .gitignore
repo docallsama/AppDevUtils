@@ -117,3 +117,7 @@ iOSInjectionProject/
 ################
 
 Private/
+.idea/
+*.xcworkspace
+*.xcodeproj
+.prompt
