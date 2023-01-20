@@ -184,7 +184,7 @@ def get_prompt(model: str, status_text: str, diff_text: str) -> str:
 This is a commit message generator by analyzing the differences in a codebase and generating a summary commit message in the imperative present tense that accurately describes the changes made. The commit message should be no more than 1000 characters and should not include any code or file names. It will be provided with code diffs and my task is to generate a commit message based on the provided diffs.
 It reviews staged changes and suggest a clear and concise commit message for the latest code update to ensure they meet the required standards described above for clarity and conciseness.
 
-A good commit message has the following characteristics:
+commit message has the following characteristics:
 - It is concise and accurately describes the changes made in the commit.
 - It is written in the imperative mood and begins with a verb
 - It explains why the change was made, rather than how it was made.
