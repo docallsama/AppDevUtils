@@ -11,7 +11,6 @@
 
 <p>
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" />
-    <img src="https://github.com/Saik0s/AppDevUtils/workflows/Build%20&%20Test/badge.svg" />
     <a href="https://github.com/apple/swift-package-manager">
       <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" />
     </a>
@@ -73,17 +72,6 @@ Then simply `import AppDevUtils` wherever you’d like to use it.
 ```swift
 @_exported import AppDevUtils
 ```
-
-## Usage
-
-## 🗺 Roadmap
-
-## 💻 Developing
-
-### Requirements
-
-- Xcode 14.0+
-
 ## 🏷 License
 
 `AppDevUtils` is available under the MIT license. See the [LICENSE file](./LICENSE) for more info.
