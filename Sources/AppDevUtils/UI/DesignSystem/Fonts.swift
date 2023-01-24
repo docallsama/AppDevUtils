@@ -3,7 +3,7 @@ import SwiftUI
 // MARK: - Font.DS
 
 public extension Font {
-  @available(macOS 13.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+  @available(macOS 13.0, iOS 16.0, tvOS 16.0, watchOS 8.0, *)
   enum DS {
     public static var titleXL = Font.system(.largeTitle, design: .rounded, weight: .regular)
     public static var titleL = Font.system(.title, design: .rounded, weight: .regular)
