@@ -1,7 +1,7 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(watchOS)
-  typealias RectCorner = UIRectCorner
+  public typealias RectCorner = UIRectCorner
   public struct RoundedCornersShape: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
