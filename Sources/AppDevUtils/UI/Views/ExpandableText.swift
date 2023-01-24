@@ -32,7 +32,7 @@ import SwiftUI
       ZStack(alignment: .bottomLeading) {
         Group {
           Text(isExpanded ? text : shrinkText)
-            + Text(moreLessText).foregroundColor(.Palette.Text.subdued)
+            + Text(moreLessText).foregroundColor(.gray)
         }
         .lineLimit(isExpanded ? nil : lineLimit)
         .background(
