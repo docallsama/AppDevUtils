@@ -196,6 +196,7 @@ A good commit message has the following characteristics:
 Here is an example of a good commit message:
 ```
 Fix password bug in login form
+
 The login form was submitting even if the password field was empty.
 This commit fixes the bug by checking that the password field is not
 empty before allowing the form to be submitted.
@@ -203,6 +204,7 @@ empty before allowing the form to be submitted.
 Here is an example of a good commit message:
 ```
 Add prettier and eslint dependencies
+
 This commit updates the package.json file to include the latest
 dependencies for prettier and eslint.
 prettier is a code formatter that automatically formats code to
