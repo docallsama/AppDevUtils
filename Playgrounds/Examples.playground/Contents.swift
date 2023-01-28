@@ -1,7 +1,7 @@
-import UIKit
-import SwiftUI
-import PlaygroundSupport
 import AppDevUtils
+import PlaygroundSupport
+import SwiftUI
+import UIKit
 
 let fonts: [(String, Font)] = [
   ("titleXL", .DS.titleXL),
@@ -19,6 +19,8 @@ let fonts: [(String, Font)] = [
   ("captionM", .DS.captionM),
   ("captionS", .DS.captionS),
 ]
+
+// MARK: - ContentView
 
 struct ContentView: View {
   var body: some View {
