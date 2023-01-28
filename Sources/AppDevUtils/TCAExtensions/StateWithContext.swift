@@ -1,7 +1,7 @@
 import ComposableArchitecture
 
 public extension AnyReducer {
-  static func withContext<S, C>(_ reducer: @escaping (inout S, C, Action, Environment) -> Effect<Action, Never>) -> Self
+  static func withContext<S, C>(_ reducer: @escaping (inout S, C, Action, Environment) -> EffectTask<Action>) -> Self
     where State == StateWithContext<S, C> {
     AnyReducer { state, action, environment in
       reducer(&state.state, state.context, action, environment)
