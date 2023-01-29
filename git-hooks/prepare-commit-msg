@@ -310,6 +310,7 @@ def get_diff_text(excluded=["package-lock.json", "yarn.lock"]) -> str:
 
     # Get the diff text for the staged changes in the current Git repository
     staged_changes = [filename for filename in result.stdout.splitlines() if filename not in excluded]
+    staged_changes = list(filter(lambda filename: not filename.endswith(".json") and not filename.endswith(".png"), staged_changes))
     args = [
         "git",
         "diff",
@@ -331,7 +332,7 @@ def get_diff_text(excluded=["package-lock.json", "yarn.lock"]) -> str:
         raise Exception("git diff failed")
 
     # the output may be too long so we will take the first 10000 characters
-    return result.stdout[:7000]
+    return result.stdout[:10000]
 
 
 def main() -> None:
@@ -344,6 +345,12 @@ def main() -> None:
     # Get the status text and diff text for the staged changes in the current Git repository
     git_status_text: str = get_status_text()
     git_diff_text: str = get_diff_text()
+
+    if len(git_status_text) > 8000:
+        git_status_text = git_status_text[:8000]
+        git_diff_text = ""
+    elif len(git_status_text) + len(git_diff_text) > 8000:
+        git_diff_text = git_diff_text[:8000 - len(git_status_text)]
 
     model: str = "text-davinci-003"
 
