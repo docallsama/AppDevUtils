@@ -1,7 +1,7 @@
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit
 
-  extension UIApplication {
+  public extension UIApplication {
     var keyWindowInConnectedScenes: UIWindow? {
       UIApplication.shared.connectedScenes
         .filter { $0.activationState == .foregroundActive }
