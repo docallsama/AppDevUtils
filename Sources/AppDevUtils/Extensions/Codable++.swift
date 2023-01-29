@@ -1,14 +1,9 @@
 import Foundation
 
 public extension Decodable {
-  static func fromFile(path: String, decoder: JSONDecoder = JSONDecoder()) -> Self? {
-    do {
-      let data = try Data(contentsOf: URL(fileURLWithPath: path))
-      return try decoder.decode(Self.self, from: data)
-    } catch {
-      log(error)
-      return nil
-    }
+  static func fromFile(path: String, decoder: JSONDecoder = JSONDecoder()) throws -> Self {
+    let data = try Data(contentsOf: URL(fileURLWithPath: path))
+    return try decoder.decode(Self.self, from: data)
   }
 }
 
