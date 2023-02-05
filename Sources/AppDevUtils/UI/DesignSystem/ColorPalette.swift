@@ -23,8 +23,13 @@ public extension Color.DS {
   }
 
   enum Text {
-    public static var base = Color(DynamicColor.label)
-    public static var subdued = Color(DynamicColor.secondaryLabel)
+    #if os(iOS) || os(tvOS) || os(watchOS)
+      public static var base = Color(DynamicColor.label)
+      public static var subdued = Color(DynamicColor.secondaryLabel)
+    #elseif os(macOS)
+      public static var base = Color(DynamicColor.labelColor)
+      public static var subdued = Color(DynamicColor.secondaryLabelColor)
+    #endif
     public static var accent = Color.accentColor
     public static var accentAlt = Color(DynamicColor(accent).complemented())
     public static var error = Color(DynamicColor.systemRed)
