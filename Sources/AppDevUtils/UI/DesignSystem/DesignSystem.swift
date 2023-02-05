@@ -1,5 +1,18 @@
 import SwiftUI
-import UIKit
+
+// MARK: - Color.DS
+
+#if os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit
+
+  public typealias AppColor = UIColor
+  public typealias AppFont = UIFont
+#elseif os(macOS)
+  import AppKit
+
+  public typealias AppColor = NSColor
+  public typealias AppFont = NSFont
+#endif
 
 // MARK: - Color.DS
 
@@ -7,9 +20,9 @@ public extension Color {
   enum DS {}
 }
 
-// MARK: - UIColor.DS
+// MARK: - AppColor.DS
 
-public extension UIColor {
+public extension AppColor {
   enum DS {}
 }
 
@@ -19,8 +32,8 @@ public extension Font {
   enum DS {}
 }
 
-// MARK: - UIFont.DS
+// MARK: - AppFont.DS
 
-public extension UIFont {
+public extension AppFont {
   enum DS {}
 }
