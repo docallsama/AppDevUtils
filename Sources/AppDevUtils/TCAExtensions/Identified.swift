@@ -2,7 +2,7 @@ import ComposableArchitecture
 
 public extension Array {
   func identifiedByIndex() -> IdentifiedArrayOf<Identified<Int, Element>> {
-    IdentifiedArray(uniqueElements: enumerated().map(Identified.init(id:value:)))
+    IdentifiedArray(uniqueElements: enumerated().map { Identified($1, id: $0) })
   }
 }
 
