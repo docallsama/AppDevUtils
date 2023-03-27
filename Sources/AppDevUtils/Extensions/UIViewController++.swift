@@ -1,7 +1,7 @@
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit
 
-  extension UIViewController {
+  public extension UIViewController {
     var topViewController: UIViewController {
       if let presentedViewController {
         return presentedViewController.topViewController

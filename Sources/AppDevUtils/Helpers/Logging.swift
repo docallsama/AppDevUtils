@@ -1,9 +1,3 @@
-
-public func log(_ items: Any..., file: StaticString = #filePath, line: UInt = #line, function: StaticString = #function) {
-  let joinedItems = items.map(String.init(describing:)).joined(separator: " ")
-  print("\(file.lastPathComponent):\(line) \(function): \(joinedItems)")
-}
-
 import Foundation
 
 public let log = Logger.self

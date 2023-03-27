@@ -104,7 +104,7 @@ public extension Optional {
     throw errorClosure?() ?? RequireError(function: function, file: file, line: line, column: column, message: "")
   }
 
-  func require(message _: String,
+  func require(message: String,
                function: StaticString = #function,
                file: StaticString = #file,
                line: UInt = #line,
@@ -113,7 +113,7 @@ public extension Optional {
       return value
     }
 
-    throw RequireError(function: function, file: file, line: line, column: column, message: "")
+    throw RequireError(function: function, file: file, line: line, column: column, message: message)
   }
 
   func required(function: StaticString = #function, file: StaticString = #file, line: UInt = #line, column: UInt = #column) -> Wrapped {
