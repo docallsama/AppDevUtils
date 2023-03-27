@@ -2,27 +2,39 @@ import Foundation
 
 // MARK: - DownloadTaskContainer
 
-struct DownloadTaskContainer {
-  weak var task: URLSessionDownloadTask?
-  let onProgressUpdate: (Double) -> Void
-  let onComplete: (Result<URL, Error>) -> Void
+public struct DownloadTaskContainer {
+  public weak var task: URLSessionDownloadTask?
+  public let onProgressUpdate: (Double) -> Void
+  public let onComplete: (Result<URL, Error>) -> Void
+
+  public init(task: URLSessionDownloadTask?, onProgressUpdate: @escaping (Double) -> Void, onComplete: @escaping (Result<URL, Error>) -> Void) {
+    self.task = task
+    self.onProgressUpdate = onProgressUpdate
+    self.onComplete = onComplete
+  }
 }
 
 // MARK: - UploadTaskContainer
 
-struct UploadTaskContainer {
-  weak var task: URLSessionUploadTask?
-  let onProgressUpdate: (Double) -> Void
-  let onComplete: (Result<Void, Error>) -> Void
+public struct UploadTaskContainer {
+  public weak var task: URLSessionUploadTask?
+  public let onProgressUpdate: (Double) -> Void
+  public let onComplete: (Result<Void, Error>) -> Void
+
+  public init(task: URLSessionUploadTask?, onProgressUpdate: @escaping (Double) -> Void, onComplete: @escaping (Result<Void, Error>) -> Void) {
+    self.task = task
+    self.onProgressUpdate = onProgressUpdate
+    self.onComplete = onComplete
+  }
 }
 
 // MARK: - SessionDelegate
 
-class SessionDelegate: NSObject, URLSessionDownloadDelegate {
+public class SessionDelegate: NSObject, URLSessionDownloadDelegate {
   private var downloadTasks: [DownloadTaskContainer] = []
   private var uploadTasks: [UploadTaskContainer] = []
 
-  func addDownloadTask(
+  public func addDownloadTask(
     _ task: URLSessionDownloadTask,
     onProgressUpdate: @escaping (Double) -> Void,
     onComplete: @escaping (Result<URL, Error>) -> Void
@@ -30,7 +42,7 @@ class SessionDelegate: NSObject, URLSessionDownloadDelegate {
     downloadTasks.append(DownloadTaskContainer(task: task, onProgressUpdate: onProgressUpdate, onComplete: onComplete))
   }
 
-  func addUploadTask(
+  public func addUploadTask(
     _ task: URLSessionUploadTask,
     onProgressUpdate: @escaping (Double) -> Void,
     onComplete: @escaping (Result<Void, Error>) -> Void
@@ -38,13 +50,13 @@ class SessionDelegate: NSObject, URLSessionDownloadDelegate {
     uploadTasks.append(UploadTaskContainer(task: task, onProgressUpdate: onProgressUpdate, onComplete: onComplete))
   }
 
-  func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+  public func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
     for taskContainer in downloadTasks where taskContainer.task == downloadTask {
       taskContainer.onComplete(.success(location))
     }
   }
 
-  func urlSession(
+  public func urlSession(
     _: URLSession,
     downloadTask: URLSessionDownloadTask,
     didWriteData _: Int64,
@@ -57,7 +69,7 @@ class SessionDelegate: NSObject, URLSessionDownloadDelegate {
     }
   }
 
-  func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+  public func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
     if let error {
       for taskContainer in downloadTasks where taskContainer.task == task {
         taskContainer.onComplete(.failure(error))
@@ -72,7 +84,7 @@ class SessionDelegate: NSObject, URLSessionDownloadDelegate {
     }
   }
 
-  func urlSession(
+  public func urlSession(
     _: URLSession,
     task: URLSessionTask,
     didSendBodyData _: Int64,
